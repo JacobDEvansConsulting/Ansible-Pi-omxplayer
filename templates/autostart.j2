@@ -1,0 +1,14 @@
+#{{ ansible_managed }}
+#AutoStart Params for Pi
+#ClearScreen
+sh -c "TERM=linux setterm -foreground black -background black >/dev/tty0"
+sh -c "TERM=linux clear >/dev/tty0"
+#Announce IP Address to Hall Helpdesk
+IPADDR="$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/' )"
+IP="{{ video_file }} Showroom Pi Booted at: ${IPADDR}"
+curl -X POST -H "Content-Type: application/json" -d '{"title": "My Integration", "message": "'"$IP"'"}' https://hall.com/api/1/services/generic/{{ hall_id }}
+
+#Start Video Loop
+VIDEO={{ video_file }}
+wget http://showroom.hostingharrisburg.com/vid/$VIDEO -t 5 -O ~/$VIDEO
+omxplayer -o hdmi ~/$VIDEO --loop
