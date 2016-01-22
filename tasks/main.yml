@@ -12,8 +12,8 @@
   command: rpi-update
 
 
-- name: Copy configuration files.
-  copy: src=autostart dest=/etc/xdg/lxsession/LXDE/autostart
+#- name: Copy configuration files.
+#  copy: src=autostart dest=/etc/xdg/lxsession/LXDE/autostart
 
 - name: Copy configuration files.
   copy: src=lightdm dest=/etc/lightdm/lightdm.conf
