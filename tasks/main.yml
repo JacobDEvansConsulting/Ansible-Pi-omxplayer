@@ -1,18 +1,22 @@
-- name: Copy configuration files.
-  copy: src=autostart dest=/etc/xdg/lxsession/LXDE/autostart
+#- name: Copy configuration files.
+#  copy: src=autostart dest=/etc/xdg/lxsession/LXDE/autostart
 
-- name: Copy configuration files.
-  copy: src=lightdm dest=/etc/lightdm/lightdm.conf
+#- name: Copy configuration files.
+#  copy: src=lightdm dest=/etc/lightdm/lightdm.conf
 
-- name: Copy configuration files.
-  copy: src=notifyPi dest=/usr/local/bin/notifyPi mode=755
+#- name: Copy configuration files.
+#  copy: src=notifyPi dest=/usr/local/bin/notifyPi mode=755
 
 - name: Install list of packages
   apt: pkg={{item}} state=installed update_cache=yes
   with_items:
        - lightdm
        - omxplayer
-       - mail-utils
+       - mailutils
        - scrot
        - lighttpd
+       - ca-certificates
+       - rpi-update
+- name: Run rpi-update
+  command: rpi-update
 
