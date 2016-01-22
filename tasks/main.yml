@@ -24,5 +24,5 @@
 - name: Copy configuration files.
   copy: src={{item}} dest=/boot/{{item}} mode=755
     with_items:
-      - config.txt
-      - cmdline.txt
+       - config.txt
+       - cmdline.txt
