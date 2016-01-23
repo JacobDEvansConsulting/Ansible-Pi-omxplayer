@@ -12,7 +12,7 @@ Uses omxplayer
 <code>ansible-playbook -skK -u pi pi.yml </code>
 </ul>
 <h2> pi.yml example</h2>
-<code>
+```yml
 ---
 - hosts: pi
   roles:
@@ -21,10 +21,10 @@ Uses omxplayer
     from_email: pi@jacobdevans.com
     to_email: boot-notifications@jacobdevans.com
     hall_id: 22c504a6071ab2c1c5d80faf9d828b8a
-</code>
+```
 
 <h2> hosts example</h2>
-<code>
+```
 [pi]
 entrance
 showroom
@@ -35,4 +35,4 @@ showroom
 [showroom]
 192.168.2.250  video_file=products.mp4
 
-</code>
+```
