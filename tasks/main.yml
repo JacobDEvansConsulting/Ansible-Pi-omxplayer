@@ -1,5 +1,5 @@
 - name: Copy configuration files.
-  copy: src=do_expand_rootfs dest=/root/do_expand_rootfs mode=755
+  get_url: url=https://raw.githubusercontent.com/JacobDEvansConsulting/raspi-config/master/raspi-config dest=/root/do_expand_rootfs mode=755
   notify:
     - expand filesystem
 
