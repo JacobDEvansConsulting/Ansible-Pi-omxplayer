@@ -6,12 +6,11 @@ d
 n
 p
 2
-
+131072
 
 p
 w
 EOF
-
 
 cat <<EOF > /etc/init.d/resize2fs_once &&
 #!/bin/sh

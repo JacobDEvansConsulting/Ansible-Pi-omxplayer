@@ -5,11 +5,13 @@ Uses omxplayer
 
 <h2> Initial Configuration Steps </h2>
 <ul>
-<li>Download the latest raspbian lite image, (raspbian-jessie-lite)</li>
+<li>Download the latest full raspbian image (raspbian-jessie)</li>
 <li>clone the image to an SD Card for the pi</li>
 <li> boot the pi, note the ip address </li>
 <li> run the playbook pi-omxplayer with sudo privileges </li>
-<code>ansible-playbook -skK -u pi pi.yml </code>
+```
+ansible-playbook -skK -u pi pi.yml
+```
 </ul>
 <h2> pi.yml example</h2>
 ```yml
