@@ -1,6 +1,8 @@
 # Ansible-Pi-omxplayer
 Ansible Scripts for Raspberry Pi's to download and play videos via http source.
 
+Uses omxplayer
+
 <h2> Initial Configuration Steps </h2>
 <ul>
 <li>Download the latest raspbian lite image, (raspbian-jessie-lite)</li>
