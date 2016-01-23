@@ -1,2 +1,4 @@
   - name: expand filesystem
     command: /root/do_expand_rootfs
+  - name: raspi init
+    command: /root/raspi-init.sh
