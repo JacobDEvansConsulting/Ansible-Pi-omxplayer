@@ -1,2 +1,2 @@
 #/usr/local/bin/notifyPi
-ifconfig | mailx -a "{{ from_email }}" -t {{ to_email }} -s "Raspberry Pi Booted" -q
+ifconfig | mailx -S smtp=smtp://{{ relay_server }} -a "{{ from_email }}" -t {{ to_email }} -s "Raspberry Pi Booted" -q
