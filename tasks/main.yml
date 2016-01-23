@@ -25,7 +25,6 @@
 - name: Install list of packages
   apt: pkg={{item}} state=installed update_cache=yes
   with_items:
-       - lightdm
        - omxplayer
        - mailutils
        - scrot
