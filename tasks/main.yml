@@ -1,3 +1,12 @@
+- name: Copy configuration files.
+  copy: src=do_expand_rootfs dest=/root/do_expand_rootfs mode=755
+  notify:
+    - expand filesystem
+
+- name: waiting for server to come back
+  local_action: wait_for host={{ inventory_hostname }} state=started delay=6 timeout=300
+  sudo: false
+
 - name: Install list of packages
   apt: pkg={{item}} state=installed update_cache=yes
   with_items:
@@ -12,14 +21,14 @@
   command: rpi-update
 
 
-#- name: Copy configuration files.
-#  copy: src=autostart dest=/etc/xdg/lxsession/LXDE/autostart
+- name: Copy configuration files.
+  copy: src=autostart dest=/etc/xdg/lxsession/LXDE-pi/autostart
 
 - name: Copy configuration files.
   copy: src=lightdm dest=/etc/lightdm/lightdm.conf
 
 - name: Copy configuration files.
-  copy: src=notifyPi dest=/usr/local/bin/notifyPi mode=755
+  copy: src=notifyPi dest=/etc/network/if-up.d/notifyPi mode=755
 
 - name: Copy configuration files.
   copy: src={{item}} dest=/boot/{{item}} mode=755
@@ -33,7 +42,3 @@
   poll: 0
   sudo: true
   ignore_errors: true
-
-- name: waiting for server to come back
-  local_action: wait_for host={{ inventory_hostname }} state=started delay=6 timeout=300
-  sudo: false
