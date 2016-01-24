@@ -41,14 +41,12 @@
 - name: Copy configuration files.
   copy: src=notifyPi dest=/etc/network/if-up.d/notifyPi mode=755
 
-- name: Template video file
-  template: src=play-video.j2 dest=/etc/network/if-up.d/play-video mode=755
-
 - name: Copy configuration files.
   copy: src={{item}} dest=/boot/{{item}} mode=755
   with_items:
        - config.txt
        - cmdline.txt
 
-- name: restart machine
+- name: Template video file
+  template: src=play-video.j2 dest=/etc/network/if-up.d/play-video mode=755
   notify: reboot
