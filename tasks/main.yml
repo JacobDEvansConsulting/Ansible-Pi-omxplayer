@@ -1,3 +1,7 @@
+- name: Boot to Console
+  command: systemctl set-default multi-user.target
+  command: ln -fs /lib/systemd/system/getty@.service /etc/systemd/system/getty.target.wants/getty@tty1.service
+
 - name: Copy fdisk resize script
   copy: src=fdisk dest=/root/fdisk mode=755
   notify: reboot
