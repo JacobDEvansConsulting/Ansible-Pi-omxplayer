@@ -25,11 +25,11 @@
 
 - name: Copy and run raspi-init
   copy: src=raspi-init.sh dest=/root/raspi-init.sh mode=755
-  register: raspi-init
+  register: raspi
 
 - name: raspi init
   shell: /root/raspi-init.sh
-  when: raspi-init.changed
+  when: raspi.changed
 
 - name: Install list of packages
   apt: pkg={{item}} state=installed update_cache=yes
