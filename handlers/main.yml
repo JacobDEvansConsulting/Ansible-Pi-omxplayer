@@ -1,8 +1,4 @@
-- name: expand filesystem
-  shell: /root/fdisk
-
-- name: raspi init
-  shell: /root/raspi-init.sh
+---
 
 - name: reboot
   shell: sleep 2 && shutdown -r now "Ansible updates triggered"
@@ -10,3 +6,5 @@
   poll: 0
   sudo: true
   ignore_errors: true
+
+...
