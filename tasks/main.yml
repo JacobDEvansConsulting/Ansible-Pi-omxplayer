@@ -28,7 +28,6 @@
 - name: Run rpi-update
   command: rpi-update
 
-
 - name: Copy configuration files.
   copy: src=autostart dest=/etc/xdg/lxsession/LXDE-pi/autostart
 
@@ -43,6 +42,9 @@
   with_items:
        - config.txt
        - cmdline.txt
+
+- name: Download Video
+  get-url: {{ video_url }} dest=/tmp/video-file
 
 - name: Template video file
   template: src=play-video.j2 dest=/etc/network/if-up.d/play-video mode=755

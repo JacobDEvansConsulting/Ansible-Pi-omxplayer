@@ -9,6 +9,4 @@ IP="{{ video_file }} Showroom Pi Booted at: ${IPADDR}"
 curl -X POST -H "Content-Type: application/json" -d '{"title": "My Integration", "message": "'"$IP"'"}' https://hall.com/api/1/services/generic/{{ hall_id }}
 
 #Start Video Loop
-VIDEO={{ video_file }}
-wget http://showroom.hostingharrisburg.com/vid/$VIDEO -t 5 -O ~/$VIDEO
-omxplayer -o hdmi ~/$VIDEO --loop
+omxplayer -o hdmi /tmp/video-file --loop
