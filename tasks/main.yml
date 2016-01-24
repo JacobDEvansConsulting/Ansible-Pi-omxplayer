@@ -3,11 +3,11 @@
   command: ln -fs /lib/systemd/system/getty@.service /etc/systemd/system/getty.target.wants/getty@tty1.service
 
 - name: Copy fdisk resize script
-  copy: src=fdisk dest=/root/fdisk mode=755
+  copy: src=fdisk dest=/root/fdisk.sh mode=755
   register: fdisk
 
 - name: expandfs
-  command: /root/fdisk
+  shell: /root/fdisk.sh
   command: resize2fs /dev/mmcblk0p2
   notify: reboot
   when: fdisk.changed
