@@ -3,11 +3,7 @@
   register: fdisk
 
 - name: restart machine
-  shell: sleep 2 && shutdown -r now "Ansible updates triggered"
-  async: 1
-  poll: 0
-  sudo: true
-  ignore_errors: true
+  nofity: restart machine
   when: fdisk.changed
 
 - name: waiting for server to come back
@@ -47,7 +43,7 @@
   copy: src=notifyPi dest=/etc/network/if-up.d/notifyPi mode=755
 
 - name: Template video file
-  template: src=play-video dest=/etc/network/if-up.d/play-video mode=755
+  template: src=play-video.j2 dest=/etc/network/if-up.d/play-video mode=755
 
 - name: Copy configuration files.
   copy: src={{item}} dest=/boot/{{item}} mode=755
@@ -56,8 +52,4 @@
        - cmdline.txt
 
 - name: restart machine
-  shell: sleep 2 && shutdown -r now "Ansible updates triggered"
-  async: 1
-  poll: 0
-  sudo: true
-  ignore_errors: true
+  nofity: restart machine
