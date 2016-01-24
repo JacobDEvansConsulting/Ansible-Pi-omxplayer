@@ -17,8 +17,7 @@
 
 - name: Copy and run raspi-init
   copy: src=raspi-init.sh dest=/root/raspi-init.sh mode=755
-  notify:
-    - raspi init
+  notify: raspi init
 
 - name: Install list of packages
   apt: pkg={{item}} state=installed update_cache=yes
@@ -52,4 +51,4 @@
        - cmdline.txt
 
 - name: restart machine
-  nofity: restart machine
+  notify: restart machine
