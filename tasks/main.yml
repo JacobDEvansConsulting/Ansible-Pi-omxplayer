@@ -3,7 +3,7 @@
   register: fdisk
 
 - name: restart machine
-  notify: restart machine
+  notify: reboot
   when: fdisk.changed
 
 - name: waiting for server to come back
@@ -51,4 +51,4 @@
        - cmdline.txt
 
 - name: restart machine
-  notify: restart machine
+  notify: reboot
