@@ -11,6 +11,7 @@
 - name: run fdisk
   shell: /root/fdisk.sh
   when: fdisk.changed
+  notify: reboot
   ignore_errors: yes
 
 - name: waiting for server to come back
