@@ -11,6 +11,9 @@
 - name: run fdisk
   shell: /root/fdisk.sh
   when: fdisk.changed
+  async: 1
+  poll: 0
+  sudo: true
   notify: reboot
   ignore_errors: yes
 
