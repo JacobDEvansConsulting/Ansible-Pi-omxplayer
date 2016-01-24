@@ -25,7 +25,11 @@
 
 - name: Copy and run raspi-init
   copy: src=raspi-init.sh dest=/root/raspi-init.sh mode=755
-  notify: raspi init
+  register: raspi-init
+
+- name: raspi init
+  shell: /root/raspi-init.sh
+  when: raspi-init.changed
 
 - name: Install list of packages
   apt: pkg={{item}} state=installed update_cache=yes
@@ -56,9 +60,6 @@
 
 - name: Copy configuration files.
   copy: src=rc.local dest=/etc/rc.local mode=755
-
-- name: raspi init
-  shell: /root/raspi-init.sh
 
 - name: Download Video
   get_url: url={{ video_url }} dest=/root/video-file
