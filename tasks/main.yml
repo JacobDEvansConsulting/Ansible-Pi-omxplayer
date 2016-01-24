@@ -3,7 +3,7 @@
   register: fdisk
 
 - name: restart machine
-  nofity: restart machine
+  notify: restart machine
   when: fdisk.changed
 
 - name: waiting for server to come back
