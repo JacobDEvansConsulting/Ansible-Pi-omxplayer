@@ -43,9 +43,9 @@
        - config.txt
        - cmdline.txt
 
+- name: Copy configuration files.
+  copy: src=rc.local dest=/etc/rc.local mode=755
+
 - name: Download Video
   get-url: {{ video_url }} dest=/tmp/video-file
-
-- name: Template video file
-  template: src=play-video.j2 dest=/etc/network/if-up.d/play-video mode=755
   notify: reboot
