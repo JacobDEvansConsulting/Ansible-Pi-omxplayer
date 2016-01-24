@@ -55,6 +55,9 @@
 - name: Copy configuration files.
   copy: src=rc.local dest=/etc/rc.local mode=755
 
+- name: raspi init
+  shell: /root/raspi-init.sh
+
 - name: Download Video
   get_url: url={{ video_url }} dest=/root/video-file
   notify: reboot
