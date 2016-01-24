@@ -6,8 +6,11 @@
   copy: src=fdisk dest=/root/fdisk.sh mode=755
   register: fdisk
 
-- name: expandfs
+- name: run fdisk
   shell: /root/fdisk.sh
+  when: fdisk.changed
+
+- name: expandfs
   command: resize2fs /dev/mmcblk0p2
   notify: reboot
   when: fdisk.changed
