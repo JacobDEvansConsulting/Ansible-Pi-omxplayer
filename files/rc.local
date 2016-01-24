@@ -19,11 +19,7 @@ if [ "$_IP" ]; then
   printf "My IP address is %s\n" "$_IP"
 fi
 
-#ClearScreen
-sh -c "TERM=linux setterm -foreground black -background black >/dev/tty0"
-sh -c "TERM=linux clear >/dev/tty0"
-
 #Start Video Loop
-omxplayer -o hdmi /tmp/video-file --loop
+omxplayer -o hdmi /root/video-file --loop
 
 exit 0
