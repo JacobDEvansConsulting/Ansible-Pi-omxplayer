@@ -8,6 +8,7 @@ Uses omxplayer
 <li>Download the latest lite raspbian image (<a href="https://downloads.raspberrypi.org/raspbian_lite_latest">raspbian-jessie-lite</a>)</li>
 <li>clone the image to an SD Card for the pi</li>
 <li> boot the pi, note the ip address </li>
+<li> add the ip address of the pi to the hosts file (see /etc/ansible/hosts)</li>
 <li> run the playbook pi-omxplayer with sudo privileges </li>
 <code>
 ansible-playbook -skK -u pi pi.yml
