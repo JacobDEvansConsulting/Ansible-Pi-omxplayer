@@ -5,7 +5,7 @@ Uses omxplayer
 
 <h2> Initial Configuration Steps </h2>
 <ul>
-<li>Download the latest full raspbian image (raspbian-jessie)</li>
+<li>Download the latest lite raspbian image (<a href="https://downloads.raspberrypi.org/raspbian_lite_latest">raspbian-jessie-lite</a>)</li>
 <li>clone the image to an SD Card for the pi</li>
 <li> boot the pi, note the ip address </li>
 <li> run the playbook pi-omxplayer with sudo privileges </li>
