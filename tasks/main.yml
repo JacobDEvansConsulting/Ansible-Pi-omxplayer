@@ -57,7 +57,7 @@
   copy: src=rc.local dest=/etc/rc.local mode=755
 
 - name: Download Video
-  get_url: url={{ video_url }} dest=/root/video-file
+  get_url: url={{ video_url }} dest=/root/video-file force=yes
   notify: reboot
 
 ...
