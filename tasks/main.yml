@@ -91,5 +91,4 @@
   get_url: url={{ video_url }} dest=/root/video-file force=yes
   notify: reboot
 
-
 ...

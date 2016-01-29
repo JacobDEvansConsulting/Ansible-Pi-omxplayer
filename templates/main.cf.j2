@@ -26,9 +26,6 @@ smtp_tls_session_cache_timeout = 3600s
 smtp_tls_security_level = may
 smtpd_tls_security_level = may
 
-mime_header_checks = $header_checks
-header_checks = regexp:/etc/postfix/header_checks
-
 {% if relay_pass is defined %}
 # enable SASL authentication
 smtp_sasl_auth_enable = yes
