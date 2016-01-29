@@ -53,7 +53,7 @@
        - cmdline.txt
 
 - name: template configuration files.
-  template: config.j2 dest=/boot/config.txt mode=755
+  template: src=config.j2 dest=/boot/config.txt mode=755
 
 - name: Copy configuration files.
   copy: src=rc.local dest=/etc/rc.local mode=755
