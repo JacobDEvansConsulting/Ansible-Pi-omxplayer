@@ -44,8 +44,11 @@
 - name: Run rpi-update
   command: rpi-update
 
-- name: Copy configuration files.
-  copy: src=notifyPi dest=/etc/network/if-up.d/notifyPi mode=755
+- name: Setup script to alert on server boot
+  template: src=boot-notify.j2 dest=/etc/init.d/boot-notify mode=0755
+
+- name: Ensure that the boot notify script runs at boot
+  service: name=boot-notify enabled=yes
 
 - name: Copy configuration files.
   copy: src={{item}} dest=/boot/{{item}} mode=755
