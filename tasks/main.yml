@@ -54,7 +54,7 @@
     - /etc/ssl/private/
 
 - name: Generate SelfSigned SSL for STARTTLS Options
-  command: "openssl req -new -x509 -days 3650 -nodes -out /etc/ssl/certs/postfix.pem -keyout" creates=/etc/ssl/private/postfix.pem
+  command: openssl req -new -x509 -days 3650 -nodes -out /etc/ssl/certs/postfix.pem -keyout /etc/ssl/private/postfix.pem -subj "/CN={{ ansible_fqdn|lower }}" creates=/etc/ssl/private/postfix.pem
   register: create-postfix-ssl
 
 - name: Set Permissions for Certificate
