@@ -46,15 +46,17 @@ smtpd_tls_security_level = may
 mime_header_checks = $header_checks
 header_checks = regexp:/etc/postfix/header_checks
 
-
+{% if relay_pass is defined %}
 # enable SASL authentication
 smtp_sasl_auth_enable = yes
 # tell Postfix where the credentials are stored
 smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
 smtp_sasl_security_options = noanonymous
+{% endif %}
+
 # use STARTTLS for encryption
 smtp_use_tls = yes
-relayhost = smtp.mandrillapp.com:submission
+relayhost = {{ relay_server }}
 
 
 recipient_canonical_classes = envelope_recipient
