@@ -47,6 +47,16 @@
 - name: Run rpi-update
   command: rpi-update
 
+- name: Generate SelfSigned SSL for STARTTLS Options
+  command: openssl req -new -x509 -days 3650 -nodes -out /etc/ssl/certs/postfix.pem -keyout /etc/ssl/private/postfix.pem -subj "CN={{ ansible_fqdn|lower }}" creates=/etc/ssl/private/postfix.pem
+  register: create-postfix-ssl
+
+- name: Set Permissions for Certificate
+  file: path=/etc/ssl/certs/postfix.pem owner=root group=root mode=0400
+
+- name: Set Permissions for Private Key
+  file: path=/etc/ssl/private/postfix.pem owner=root group=root mode=0400
+
 - name: configure postfix
   template: src={{item}}.j2 dest=/etc/postfix/{{item}}
   with_items:
