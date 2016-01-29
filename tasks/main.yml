@@ -50,8 +50,10 @@
 - name: Copy configuration files.
   copy: src={{item}} dest=/boot/{{item}} mode=755
   with_items:
-       - config.txt
        - cmdline.txt
+
+- name: template configuration files.
+  template: config.j2 dest=/boot/config.txt mode=755
 
 - name: Copy configuration files.
   copy: src=rc.local dest=/etc/rc.local mode=755

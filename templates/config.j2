@@ -1,0 +1,17 @@
+# {{ansible_managed}}
+# More info on this file available at http://raspberrypi.stackexchange.com/tags/config.txt/info
+
+{% if video_res is defined %}
+{% if video_res is 720p %}
+#hard-code resolution to 720p
+hdmi_group=1
+hdmi_mode=4
+
+{% endif %}
+{% if video_res is 1080p %}
+#hard-code resolution to 1080p
+hdmi_group=1
+hdmi_mode=16
+
+{% endif %}
+{% endif %}

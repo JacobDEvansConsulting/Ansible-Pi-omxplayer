@@ -32,9 +32,11 @@ entrance
 showroom
 
 [entrance]
-192.168.1.250  video_url=http://www.example.com/videos/entrance.mp4
+192.168.1.250  video_url=http://www.example.com/videos/entrance.mp4 video_res=10800p
 
 [showroom]
-192.168.2.250  video_url=http://www.example.com/videos/showroom.mp4
+192.168.2.250  video_url=http://www.example.com/videos/showroom.mp4 video_res=720p
+192.168.2.250  video_url=http://www.example.com/videos/showroom2.mp4
+
 
 ```
