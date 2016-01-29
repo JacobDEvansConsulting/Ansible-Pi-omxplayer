@@ -41,8 +41,22 @@
        - lighttpd
        - ca-certificates
        - rpi-update
+       - libsasl2-modules
+       - postfix
+
 - name: Run rpi-update
   command: rpi-update
+
+- name: configure postfix
+  template: src={{item}}.j2 dest=/etc/postfix/{{item}}
+  with_items:
+    - recipient_canonical_map
+    - generic
+    - main.cf
+    - sasl_passwd
+  notify:
+    - reload postfix
+    - postmap sasl_passwd
 
 - name: Setup script to alert on server boot
   template: src=boot-notify.j2 dest=/etc/init.d/boot-notify mode=0755
@@ -64,5 +78,6 @@
 - name: Download Video
   get_url: url={{ video_url }} dest=/root/video-file force=yes
   notify: reboot
+
 
 ...

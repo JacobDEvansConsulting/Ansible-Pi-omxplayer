@@ -7,4 +7,9 @@
   sudo: true
   ignore_errors: true
 
+- name: restart postfix
+  service: name=postfix state=restarted enabled=yes
+
+- name: postmap sasl_passwd
+  shell: postmap /etc/postfix/sasl_passwd
 ...
