@@ -5,9 +5,10 @@
 # *************************************************
 
 PATH=/bin:/usr/sbin:/usr/bin:/sbin
+$SERVER=$(hostname)
 case $1 in
     start)
-        mailx -S smtp-use-starttls -S smtp=smtp://{{ relay_server }} -S smtp-auth-user={{ relay_user }} -S smtp-auth-password={{ relay_pass }} -a {{ from_email }} -t {{ to_email }} -s "$(hostname) Booted" -q <<EOF
+        mailx -S smtp-use-starttls -S smtp=smtp://{{ relay_server }} -S smtp-auth-user={{ relay_user }} -S smtp-auth-password={{ relay_pass }} -a {{ from_email }} -t {{ to_email }} -s "$SERVER Booted" -q <<EOF
 $SERVER has booted up.
 If this is news to you, please investigate.
 `date`
