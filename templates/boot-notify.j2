@@ -14,7 +14,7 @@
 ### END INIT INFO
 
 PATH=/bin:/usr/sbin:/usr/bin:/sbin
-$SERVER=$(hostname)
+SERVER=$(hostname)
 case $1 in
     start)
         mailx {{ to_email }} -s "$SERVER Booted" -q <<EOF
