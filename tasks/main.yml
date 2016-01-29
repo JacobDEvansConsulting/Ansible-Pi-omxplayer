@@ -48,10 +48,8 @@
   command: rpi-update
 
 - name: Creates ssl private directory
-  file:  path={{item}} state=directory mode=755 owner=root group=root
-  with_items:
-    - /etc/ssl/certs/
-    - /etc/ssl/private/
+  file:  path=/etc/ssl/private/ state=directory mode=755 owner=root group=root
+  file:  path=/etc/ssl/certs/ state=directory mode=755 owner=root group=root
 
 - name: Generate SelfSigned SSL for STARTTLS Options
   command: openssl req -new -x509 -days 3650 -nodes -out /etc/ssl/certs/postfix.pem -keyout /etc/ssl/private/postfix.pem -subj "/CN={{ ansible_fqdn|lower }}" creates=/etc/ssl/private/postfix.pem
