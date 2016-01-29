@@ -10,6 +10,7 @@ Uses omxplayer
 <li> boot the pi, note the ip address </li>
 <li> add the ip address of the pi to the hosts file (see /etc/ansible/hosts)</li>
 <li> run the playbook pi-omxplayer with sudo privileges </li>
+<li> Some older PI's may require you to set the video res, Pi2B's should not. </li>
 <code>
 ansible-playbook -skK -u pi pi.yml
 </code>
