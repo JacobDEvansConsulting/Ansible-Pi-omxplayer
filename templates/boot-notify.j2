@@ -4,6 +4,14 @@
 # chkconfig: 2345 99 99
 # description: notify email address on system boot.
 # *************************************************
+### BEGIN INIT INFO
+# Provides:          boot-notify
+# Required-Start:    $local_fs
+# Required-Stop:     $local_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: boot-notify
+### END INIT INFO
 
 PATH=/bin:/usr/sbin:/usr/bin:/sbin
 $SERVER=$(hostname)
