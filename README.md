@@ -19,6 +19,7 @@ ansible-playbook -skK -u pi pi.yml
 ```yml
 ---
 - hosts: pi
+  ansible_required: 1.9
   roles:
     - pi-omxplayer
   vars:
