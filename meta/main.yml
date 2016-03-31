@@ -6,13 +6,8 @@ galaxy_info:
   license: MIT
   
   min_ansible_version: 1.9
-<<<<<<< Updated upstream
-
-  - name: Raspbian
-=======
   platforms:
   - name: Debian
->>>>>>> Stashed changes
     version:
     - etch
     - jessie
