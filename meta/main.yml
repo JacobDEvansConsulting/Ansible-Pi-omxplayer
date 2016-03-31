@@ -1,0 +1,15 @@
+galaxy_info:
+  author: Jacob Evans
+  description: Raspberry Pi OMX Player
+  company: 
+  
+  license: MIT
+  
+  min_ansible_version: 1.9
+
+  - name: Raspbian
+    version:
+    - all  
+  
+  galaxy_tags: [raspberry, pi]
+dependencies: []

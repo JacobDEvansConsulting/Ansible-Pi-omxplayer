@@ -1,15 +1,25 @@
 #!/bin/bash
 #
+# Centos/Redhat
 # *************************************************
 # chkconfig: 2345 99 99
 # description: notify email address on system boot.
 # *************************************************
+# Debian/Ubuntu
+### BEGIN INIT INFO
+# Provides:          boot-notify
+# Required-Start:    $local_fs
+# Required-Stop:     $local_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: boot-notify
+### END INIT INFO
 
 PATH=/bin:/usr/sbin:/usr/bin:/sbin
-$SERVER=$(hostname)
+SERVER=$(hostname)
 case $1 in
     start)
-        mailx -S smtp-use-starttls -S smtp=smtp://{{ relay_server }} -S smtp-auth-user={{ relay_user }} -S smtp-auth-password={{ relay_pass }} -a {{ from_email }} -t {{ to_email }} -s "$SERVER Booted" -q <<EOF
+        mailx {{ to_email }} -s "$SERVER Booted" -q <<EOF
 $SERVER has booted up.
 If this is news to you, please investigate.
 `date`

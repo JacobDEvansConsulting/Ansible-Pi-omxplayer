@@ -1,0 +1,43 @@
+# {{ ansible_managed}}
+mail_owner = postfix
+inet_interfaces = all
+inet_protocols = all
+
+mydestination = $myhostname, localhost.$mydomain, localhost
+mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
+
+unknown_local_recipient_reject_code = 550
+alias_maps = hash:/etc/aliases
+alias_database = hash:/etc/aliases
+
+#Opportunistic TLS Options
+smtpd_use_tls = yes
+smtpd_tls_cert_file = /etc/ssl/certs/postfix.pem
+smtpd_tls_key_file = /etc/ssl/private/postfix.pem
+smtpd_tls_loglevel = 3
+smtpd_tls_received_header = yes
+smtpd_tls_session_cache_timeout = 3600s
+tls_random_source = dev:/dev/urandom
+smtp_use_tls = yes
+smtp_tls_cert_file = /etc/ssl/certs/postfix.pem
+smtp_tls_key_file = /etc/ssl/private/postfix.pem
+smtp_tls_loglevel = 3
+smtp_tls_session_cache_timeout = 3600s
+smtp_tls_security_level = may
+smtpd_tls_security_level = may
+
+{% if relay_pass is defined %}
+# enable SASL authentication
+smtp_sasl_auth_enable = yes
+# tell Postfix where the credentials are stored
+smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+smtp_sasl_security_options = noanonymous
+{% endif %}
+
+# use STARTTLS for encryption
+smtp_use_tls = yes
+relayhost = {{ relay_server }}
+
+
+recipient_canonical_classes = envelope_recipient
+recipient_canonical_maps = regexp:/etc/postfix/recipient_canonical_map
