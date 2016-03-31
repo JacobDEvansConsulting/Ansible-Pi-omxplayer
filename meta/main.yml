@@ -6,10 +6,19 @@ galaxy_info:
   license: MIT
   
   min_ansible_version: 1.9
+<<<<<<< Updated upstream
 
   - name: Raspbian
+=======
+  platforms:
+  - name: Debian
+>>>>>>> Stashed changes
     version:
-    - all  
+    - etch
+    - jessie
+    - lenny
+    - squeeze
+    - wheezy
   
-  galaxy_tags: [raspberry, pi]
+  galaxy_tags: [raspberry, pi, video, display]
 dependencies: []
