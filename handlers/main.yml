@@ -1,18 +1,2 @@
 ---
-
-- name: reboot
-  shell: sleep 2 && shutdown -r now "Ansible updates triggered"
-  async: 1
-  poll: 0
-  sudo: true
-  ignore_errors: true
-
-- name: restart postfix
-  service: name=postfix state=restarted enabled=yes
-
-- name: reload postfix
-  service: name=postfix state=reloaded enabled=yes
-
-- name: postmap sasl_passwd
-  shell: postmap /etc/postfix/sasl_passwd
-...
+# handlers file for pi-omxplayer
