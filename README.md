@@ -1,4 +1,4 @@
-Role Name
+pi-omxplayer
 =========
 
 A simple way to deploy videos to Raspberry Pi's loop at boot for unattended displays.
