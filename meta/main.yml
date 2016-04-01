@@ -7,9 +7,13 @@ galaxy_info:
   
   min_ansible_version: 1.9
   platforms:
-  - name: Raspbian
+  - name: Debian
     version:
-    - all  
+    - etch
+    - jessie
+    - lenny
+    - squeeze
+    - wheezy
   
-  galaxy_tags: [raspberry, pi]
+  galaxy_tags: [raspberry, pi, video, display]
 dependencies: []
